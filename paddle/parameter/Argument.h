@@ -29,7 +29,8 @@ namespace paddle {
 typedef std::shared_ptr<std::vector<void*>> UserDefinedVectorPtr;
 typedef std::shared_ptr<std::vector<std::string>> SVectorPtr;
 
-struct Argument {
+class Argument {
+public:
   Argument()
       : in(nullptr),
         value(nullptr),
@@ -72,6 +73,7 @@ struct Argument {
     dataId = argument.dataId;
   }
 
+public:
   MatrixPtr in;  // used if needed
   MatrixPtr value;
   IVectorPtr ids;  // a sequence of ids. Can be use for class id for costLayer
@@ -176,6 +178,55 @@ struct Argument {
     return cost;
   }
 
+protected:
+  void resizeAndCopy(MatrixPtr& dest,
+      const MatrixPtr& src,
+      bool useGpu,
+      hl_stream_t stream);
+
+  void resizeAndCopy(IVectorPtr& dest,
+      const IVectorPtr& src,
+      bool useGpu,
+      hl_stream_t stream);
+
+  void resizeAndCopy(ICpuGpuVectorPtr& dest,
+      const ICpuGpuVectorPtr& src,
+      bool useGpu,
+      hl_stream_t stream);
+
+  void resizeAndCopy(MatrixPtr& dest, const MatrixPtr& src,
+      int32_t startRow, int32_t copySize, bool useGpu,
+      hl_stream_t stream = HPPL_STREAM_DEFAULT);
+
+  void resizeAndCopy(IVectorPtr& dest, const IVectorPtr& src,
+      int32_t startPos, int32_t copySize, bool useGpu,
+      hl_stream_t stream = HPPL_STREAM_DEFAULT);
+
+  void resizeAndCopy(UserDefinedVectorPtr& dest,
+      const UserDefinedVectorPtr& src, int32_t startPos,
+      int32_t copySize, bool useGpu,
+      hl_stream_t stream = HPPL_STREAM_DEFAULT);
+
+  void resizeAndCopy(ICpuGpuVectorPtr& dest,
+      const ICpuGpuVectorPtr& src,
+      int32_t startPos, int32_t copySize,
+      bool useGpu,
+      hl_stream_t stream = HPPL_STREAM_DEFAULT);
+
+  void resizeAndCopy(UserDefinedVectorPtr& dest,
+      const UserDefinedVectorPtr& src, bool useGpu,
+      hl_stream_t stream);
+
+  void resizeAndCopy(SVectorPtr& dest, const SVectorPtr& src,
+      bool useGpu,
+      hl_stream_t stream);
+
+  void resizeAndCopy(SVectorPtr& dest,
+      const SVectorPtr& src,
+      int32_t startPos, int32_t copySize, bool useGpu,
+      hl_stream_t stream);
+
+public:
   /**
    * @brief (value, grad, sequenceStartPositions) of output are subset of
    *        input. Note that, output share the same memory of input.

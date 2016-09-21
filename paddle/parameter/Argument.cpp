@@ -19,8 +19,9 @@ limitations under the License. */
 #include <algorithm>
 
 namespace paddle {
-static void resizeAndCopy(MatrixPtr& dest, const MatrixPtr& src, bool useGpu,
-                          hl_stream_t stream) {
+void Argument::resizeAndCopy(MatrixPtr& dest,
+    const MatrixPtr& src, bool useGpu,
+    hl_stream_t stream) {
   if (src) {
     if (!dest) {
       dest = src->clone(0, 0, useGpu);
@@ -34,8 +35,9 @@ static void resizeAndCopy(MatrixPtr& dest, const MatrixPtr& src, bool useGpu,
   }
 }
 
-static void resizeAndCopy(IVectorPtr& dest, const IVectorPtr& src, bool useGpu,
-                          hl_stream_t stream) {
+void Argument::resizeAndCopy(IVectorPtr& dest,
+    const IVectorPtr& src, bool useGpu,
+    hl_stream_t stream) {
   if (src) {
     IVector::resizeOrCreate(dest, src->getSize(), useGpu);
     dest->copyFrom(*src, stream);
@@ -44,10 +46,9 @@ static void resizeAndCopy(IVectorPtr& dest, const IVectorPtr& src, bool useGpu,
   }
 }
 
-static void resizeAndCopy(ICpuGpuVectorPtr& dest,
-                          const ICpuGpuVectorPtr& src,
-                          bool useGpu,
-                          hl_stream_t stream) {
+void Argument::resizeAndCopy(ICpuGpuVectorPtr& dest,
+    const ICpuGpuVectorPtr& src, bool useGpu,
+    hl_stream_t stream) {
   if (src) {
     ICpuGpuVector::resizeOrCreate(dest, src->getSize(), useGpu);
     dest->copyFrom(*src, stream);
@@ -56,9 +57,11 @@ static void resizeAndCopy(ICpuGpuVectorPtr& dest,
   }
 }
 
-static void resizeAndCopy(MatrixPtr& dest, const MatrixPtr& src,
-                          int32_t startRow, int32_t copySize, bool useGpu,
-                          hl_stream_t stream = HPPL_STREAM_DEFAULT) {
+void Argument::resizeAndCopy(MatrixPtr& dest,
+    const MatrixPtr& src,
+    int32_t startRow, int32_t copySize, bool useGpu,
+    hl_stream_t stream) {
+
   if (src) {
     CHECK_LE((size_t)startRow + copySize, src->getHeight());
     int height = copySize;
@@ -84,9 +87,11 @@ static void resizeAndCopy(MatrixPtr& dest, const MatrixPtr& src,
   }
 }
 
-static void resizeAndCopy(IVectorPtr& dest, const IVectorPtr& src,
-                          int32_t startPos, int32_t copySize, bool useGpu,
-                          hl_stream_t stream = HPPL_STREAM_DEFAULT) {
+void Argument::resizeAndCopy(IVectorPtr& dest,
+    const IVectorPtr& src,
+    int32_t startPos, int32_t copySize,
+    bool useGpu,
+    hl_stream_t stream) {
   if (src) {
     CHECK_LE((size_t)startPos + copySize, src->getSize());
 
@@ -98,12 +103,11 @@ static void resizeAndCopy(IVectorPtr& dest, const IVectorPtr& src,
   }
 }
 
-static void resizeAndCopy(ICpuGpuVectorPtr& dest,
-                          const ICpuGpuVectorPtr& src,
-                          int32_t startPos,
-                          int32_t copySize,
-                          bool useGpu,
-                          hl_stream_t stream = HPPL_STREAM_DEFAULT) {
+void Argument::resizeAndCopy(ICpuGpuVectorPtr& dest,
+    const ICpuGpuVectorPtr& src,
+    int32_t startPos, int32_t copySize,
+    bool useGpu,
+    hl_stream_t stream) {
   if (src) {
     CHECK_LE((size_t)startPos + copySize, src->getSize());
 
@@ -114,9 +118,10 @@ static void resizeAndCopy(ICpuGpuVectorPtr& dest,
   }
 }
 
-static void resizeAndCopy(UserDefinedVectorPtr& dest,
-                          const UserDefinedVectorPtr& src, bool useGpu,
-                          hl_stream_t stream) {
+void Argument::resizeAndCopy(UserDefinedVectorPtr& dest,
+    const UserDefinedVectorPtr& src,
+    bool useGpu,
+    hl_stream_t stream) {
   if (src) {
     CHECK(!useGpu) << "not implemented";
     size_t height = src->size();
@@ -131,10 +136,10 @@ static void resizeAndCopy(UserDefinedVectorPtr& dest,
   }
 }
 
-static void resizeAndCopy(UserDefinedVectorPtr& dest,
-                          const UserDefinedVectorPtr& src, int32_t startPos,
-                          int32_t copySize, bool useGpu,
-                          hl_stream_t stream = HPPL_STREAM_DEFAULT) {
+void Argument::resizeAndCopy(UserDefinedVectorPtr& dest,
+    const UserDefinedVectorPtr& src,
+    int32_t startPos, int32_t copySize, bool useGpu,
+    hl_stream_t stream) {
   if (src) {
     CHECK(!useGpu) << "not implemented";
     CHECK_LE((size_t)startPos + copySize, src->size());
@@ -151,8 +156,9 @@ static void resizeAndCopy(UserDefinedVectorPtr& dest,
   }
 }
 
-static void resizeAndCopy(SVectorPtr& dest, const SVectorPtr& src, bool useGpu,
-                          hl_stream_t stream) {
+void Argument::resizeAndCopy(SVectorPtr& dest,
+    const SVectorPtr& src, bool useGpu,
+    hl_stream_t stream) {
   if (src) {
     size_t height = src->size();
     if (!dest) {
@@ -166,9 +172,10 @@ static void resizeAndCopy(SVectorPtr& dest, const SVectorPtr& src, bool useGpu,
   }
 }
 
-static void resizeAndCopy(SVectorPtr& dest, const SVectorPtr& src,
-                          int32_t startPos, int32_t copySize, bool useGpu,
-                          hl_stream_t stream = HPPL_STREAM_DEFAULT) {
+void Argument::resizeAndCopy(SVectorPtr& dest,
+    const SVectorPtr& src,
+    int32_t startPos, int32_t copySize, bool useGpu,
+    hl_stream_t stream) {
   if (src) {
     CHECK_LE((size_t)startPos + copySize, src->size());
     size_t height = copySize;
