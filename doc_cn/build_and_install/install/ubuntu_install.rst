@@ -1,4 +1,4 @@
-Ubuntu部署PaddlPaddle
+Ubuntu部署PaddlePaddle
 ===================================
 
 PaddlePaddle提供了deb安装包，并在ubuntu 14.04做了完备测试，理论上也支持其他的debian发行版。
@@ -21,18 +21,13 @@ PaddlePaddle提供了deb安装包，并在ubuntu 14.04做了完备测试，理�
 下载完相关安装包后，执行:
 
 ..  code-block:: shell
-
     dpkg -i paddle-*-cpu.deb
     apt-get install -f
 
-..  code-block:: shell
-    sudo apt-get install gdebi
-    gdebi paddle-*-cpu.deb
 
 或者:
 
 ..  code-block:: shell
-
     dpkg -i paddle-*-cpu.deb
     apt-get install -f
 
