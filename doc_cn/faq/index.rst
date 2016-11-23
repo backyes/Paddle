@@ -108,10 +108,9 @@ PaddlePaddle支持Sparse的训练，sparse训练需要训练特征是 :code:`spa
 
 * 单机GPU训练
   * 使用显卡训练。设置命令行参数 :code:`use_gpu`。
-  * 使用多块显卡训练。设置命令行参数 :code:`use_gpu` 和 :code:`trainer_count`。
+  * 使用多块显卡训练。设置命令行参数 :code:`use_gpu` 和 :code:`trainer_count` 。
 
 * 多机训练
-  * 使用多块显卡训练。设置命令行参数 :code:`use_gpu` 和 :code:`trainer_count`。
   * 具体的多机训练方法参考 `多机训练文档<../cluster/index.html>`_ 。
 
 
