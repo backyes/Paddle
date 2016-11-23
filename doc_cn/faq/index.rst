@@ -113,6 +113,8 @@ PaddlePaddle支持Sparse的训练，sparse训练需要训练特征是 :code:`spa
 * 多机训练
   * 具体的多机训练方法参考 `多机训练文档<../cluster/index.html>`_ 。
 
+`这里<../ui/data_provider/pydataprovider2.html#provider>`_ 。
+
 
 3. 遇到“非法指令”或者是“illegal instruction” 
 --------------------------------------------
