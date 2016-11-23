@@ -35,15 +35,15 @@ PaddlePaddle提供了deb安装包，并在ubuntu 14.04做了完备测试，理�
 在 :code:`dpkg -i` 的时候如果报一些依赖未找到的错误是正常的，
 在 :code:`apt-get install -f` 里会继续安装 PaddlePaddle。
 
-安装完成后,可以使用命令 :code:`paddle version` 查看安装后的paddle 版本。可能的输出为
+安装完成后，可以使用命令 :code:`paddle version` 查看安装后的paddle 版本:
 
 ..  literalinclude:: paddle_version.txt
 
 可能遇到的问题
 --------------
 
-设置gpu版本运行时cuda环境
-++++++++++++++++++++++++++++++
+如何设置gpu版本运行时cuda环境运行GPU版本
+++++++++++++++++++++++++++++++++++++++++
 
 如果使用GPU版本的PaddlePaddle，请安装CUDA 7.5 和CUDNN 5到本地环境中，并设置：
 
