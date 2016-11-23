@@ -21,6 +21,7 @@ PaddlePaddle提供了deb安装包，并在ubuntu 14.04做了完备测试，理�
 下载完相关安装包后，执行:
 
 ..  code-block:: shell
+
     dpkg -i paddle-*-cpu.deb
     apt-get install -f
 
@@ -28,6 +29,7 @@ PaddlePaddle提供了deb安装包，并在ubuntu 14.04做了完备测试，理�
 或者:
 
 ..  code-block:: shell
+
     dpkg -i paddle-*-cpu.deb
     apt-get install -f
 
