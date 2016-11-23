@@ -22,9 +22,8 @@ PaddlePaddle提供了deb安装包，并在ubuntu 14.04做了完备测试，理�
 
 ..  code-block:: shell
 
-    dpkg -i paddle-*-cpu.deb
-    apt-get install -f
-
+    sudo apt-get install gdebi
+    gdebi paddle-*-cpu.deb
 
 或者:
 
