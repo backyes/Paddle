@@ -9,9 +9,13 @@ PaddlePaddle提供了deb安装包，并在ubuntu 14.04做了完备测试，理�
 安装包的下载地址是\: https://github.com/PaddlePaddle/Paddle/releases
 
 它包含四个版本\:
+
 * cpu版本: 支持主流intel x86处理器平台, 支持avx指令集。
+
 * cpu-noavx版本：支持主流intel x86处理器平台，不支持avx指令集。
+
 * gpu版本：支持主流intel x86处理器平台，支持nvidia cuda平台，支持avx指令集。
+
 * gpu-noavx版本：支持主流intel x86处理器平台，支持nvidia cuda平台，不支持avx指令级。
 
 下载完相关安装包后，执行:
