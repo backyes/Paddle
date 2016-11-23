@@ -96,7 +96,7 @@ PaddlePaddle支持Sparse的训练，sparse训练需要训练特征是 :code:`spa
 
 ..  literalinclude:: word2vec_config.py
 
-更多关于sparse训练的内容请参考 `sparse训练的文档<TBD>`
+更多关于sparse训练的内容请参考 `sparse训练的文档 <TBD>`
 
 利用更多的计算资源
 ++++++++++++++++++
