@@ -4,7 +4,7 @@ Ubuntu部署PaddlPaddle
 PaddlePaddle提供了deb安装包，并在ubuntu 14.04做了完备测试，理论上也支持其他的debian发行版。
 
 安装
----
+------
 
 安装包的下载地址是\: https://github.com/PaddlePaddle/Paddle/releases
 
