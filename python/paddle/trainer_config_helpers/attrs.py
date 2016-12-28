@@ -94,6 +94,11 @@ class ParameterAttribute(object):
     :param sparse_weight: enable weight sparse. The parameter value will be
                           stored as sparse format.
     :type sparse_weight: bool
+
+    NOTE:
+        sparse_weight=True and sparse data are not allowed simutaneously,
+        since Matrix:mul(CpuSparseMatrix, CpuSparseMatrix) not supported.
+
     """
 
     def __init__(self,
