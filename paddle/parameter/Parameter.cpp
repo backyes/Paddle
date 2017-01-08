@@ -162,6 +162,7 @@ bool Parameter::isGradSparseUpdate() const {
 }
 
 void Parameter::setMat(ParameterType pType, int matType) {
+  LOG(INFO) << config_.name() << " " << pType << " " <<  matType;
   CHECK(!mats_[pType]);
 
   if (config_.dims_size() == 0 && matType == MAT_NORMAL) {
@@ -255,6 +256,7 @@ void Parameter::setMat(ParameterType pType, int matType) {
         getGlobalSyncThreadPool());
     mats_[pType] = mat;
   } else if (matType == MAT_SPARSE_ROW_AUTO_GROW) {
+    LOG(INFO) << "MAT_SPARSE_ROW_AUTO_GROW";
     CHECK(isGradSparseUpdate());
     mats_[pType] = std::make_shared<SparseAutoGrowRowCpuMatrix>(height, width);
   } else {

@@ -28,6 +28,7 @@ namespace paddle {
 void parameterInitNN(int paramId,
                      Parameter* para,
                      std::vector<ParameterPtr>* sharedParams) {
+  LOG(INFO) << "parameterInitNN in NeuralNetwork.cpp";
   // Create parameters values.
   if (!para->useGpu() && sharedParams) {
     para->enableSharedType(PARAMETER_VALUE,

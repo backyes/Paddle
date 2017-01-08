@@ -88,6 +88,7 @@ public:
   void reserveStore() {
     if (!storeMat_.getData() && !localIndices_->empty()) {
       rowStore_.resize(localIndices_->size() * width_);
+      LOG(INFO) << "reserveStore " << localIndices_->size();
     }
   }
 
